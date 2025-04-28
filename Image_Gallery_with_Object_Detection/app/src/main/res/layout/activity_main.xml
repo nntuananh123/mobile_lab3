@@ -8,16 +8,32 @@
     android:background="@color/background_color"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Image Gallery"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/accent_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="24dp"
         app:cardElevation="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EEEEEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/title_text">
 
         <EditText
             android:id="@+id/search_edit_text"
@@ -25,7 +41,8 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="8dp"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/accent_color"
             android:hint="Search images..."
             android:imeOptions="actionSearch"
             android:inputType="text"
@@ -38,19 +55,21 @@
         android:id="@+id/images_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:clipToPadding="false"
-        android:padding="8dp"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_card" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/accent_color"
+        android:indeterminate="true"
+        app:indicatorColor="@color/accent_color"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,10 +78,13 @@
 
     <TextView
         android:id="@+id/empty_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="No images found"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="No images found. Try a different search."
         android:textSize="18sp"
+        android:textColor="#757575"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
